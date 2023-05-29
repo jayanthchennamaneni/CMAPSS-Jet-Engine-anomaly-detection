@@ -39,7 +39,7 @@ def train_and_validate(model, criterion, optimizer, X_train_tensor, y_train_tens
             print(f'Epoch {epoch}, Train Loss: {train_loss.item()}, Validation Loss: {val_loss.item()}')
     
     # Save the model
-    torch.save(model.state_dict(), './models/model.pt')
+    torch.save(model, './models/model.pt')
 
     return model
 

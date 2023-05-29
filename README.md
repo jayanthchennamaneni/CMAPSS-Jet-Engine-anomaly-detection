@@ -1,6 +1,12 @@
-# Turbofan Engine Remaining Useful Life Prediction
+# Predictive Maintenance of Turbofan Engines
 
-This project aims to predict the remaining useful life (RUL) of turbofan engines based on sensor data. Using PyTorch and a regression model, the application forecasts the number of operational cycles left before the engine fails. The application is served using FastAPI and is containerized using Docker.
+The focus of this project is to implement a predictive maintenance model for turbofan engines using Machine Learning. The project takes advantage of a comprehensive dataset made available by NASA, which encompasses different operational settings and conditions of various turbofan engines until failure.
+
+The specific aim of the project is to predict the Remaining Useful Life (RUL) of each engine based on its sensor readings. This is achieved using PyTorch to build and train a regression model capable of forecasting the number of operational cycles an engine has left before it fails.
+
+The developed model is then integrated into a web application served using FastAPI. This web application accepts sensor data and returns a prediction of the RUL.
+
+To enhance the portability and scalability of the application, it is containerized using Docker.This project also implements Continuous Integration (CI) using GitHub Actions, ensuring that the model and the application are constantly updated and tested for performance.
 
 ## Directory Structure
 
@@ -22,10 +28,10 @@ The directory structure of this repository is organized as follows:
 
 This application was trained and evaluated on four datasets (FD001, FD002, FD003, FD004). The Mean Absolute Error (MAE) between the predicted and actual RUL was used as the evaluation metric. The application achieved the following MAEs on the four test datasets:
 
-FD001: ...
-FD002: ...
-FD003: ...
-FD004: ...
+1. FD001: ...
+2. FD002: ...
+3. FD003: ...
+4. FD004: ...
 
 
 ## Getting Started
@@ -34,7 +40,7 @@ To get the project up and running, follow these steps:
 
 1. Clone the repository.
 2. Install the necessary Python packages using `pip install -r requirements.txt`.
-3. Download the dataset from - [Turbofan Engine Degradation Simulation Data Set](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6) and add to root directory.
+3. Download the dataset from [Turbofan Engine Degradation Simulation Data Set](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6) and add to root directory.
 
 ## Running the Fast API
 
@@ -48,7 +54,7 @@ After creating the Docker image, you can run the Fast API. The API consists of t
 
 To interact with the API, can use any HTTP client like curl, Postman.
 
-Start the Flask API by running the Docker container:
+Start the Fast API by running the Docker container:
 ```
 docker run -p 8000:8000 <docker-image-name>:<tag>
 ``` 
@@ -64,7 +70,7 @@ The CI process can be configured according to specific needs in the `.github/wor
 ## Additional Resources
 
 - [PASCAL VOC Dataset](http://host.robots.ox.ac.uk/pascal/VOC/)
-- [Flask Documentation](https://flask.palletsprojects.com/)
+- [FAST API Documentation](https://fastapi.tiangolo.com)
 - [Docker Documentation](https://docs.docker.com/)
 - [Turbofan Engine Degradation Simulation Data Set](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6)
 

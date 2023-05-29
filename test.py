@@ -1,4 +1,4 @@
-from train import model, RegressionModel
+from train import RegressionModel
 import torch
 import pandas as pd
 import numpy as np
@@ -16,11 +16,10 @@ X_test_last_cycle = df1.groupby('unit_number').last().reset_index()
 X_test_tensor = torch.tensor(X_test_last_cycle.values, dtype=torch.float)
 
 # Load the model
-model = RegressionModel(26)  # Initialize the model
-model.load_state_dict(torch.load('./models/model.pt'))  # Load the trained weights
-model.eval()  # Set the model to evaluation mode
+model = RegressionModel(26)
+model = torch.load("./models/model.pt")  # Load the trained weights
 
-# Make predictions
+model.eval()
 with torch.no_grad():
     y_pred1 = model(X_test_tensor)
 
