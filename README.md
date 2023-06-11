@@ -24,15 +24,6 @@ The directory structure of this repository is organized as follows:
 └── requirements.txt    #  Contains all the Python dependencies required by the project.
 
 ```
-## Results
-
-This application was trained and evaluated on four datasets (FD001, FD002, FD003, FD004). The Mean Absolute Error (MAE) between the predicted and actual RUL was used as the evaluation metric. The application achieved the following MAEs on the four test datasets:
-
-1. FD001: ...
-2. FD002: ...
-3. FD003: ...
-4. FD004: ...
-
 
 ## Getting Started
 
@@ -69,7 +60,6 @@ The CI process can be configured according to specific needs in the `.github/wor
 
 ## Additional Resources
 
-- [PASCAL VOC Dataset](http://host.robots.ox.ac.uk/pascal/VOC/)
 - [FAST API Documentation](https://fastapi.tiangolo.com)
 - [Docker Documentation](https://docs.docker.com/)
 - [Turbofan Engine Degradation Simulation Data Set](https://data.nasa.gov/Aerospace/CMAPSS-Jet-Engine-Simulated-Data/ff5v-kuh6)

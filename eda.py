@@ -12,7 +12,7 @@ def preprocess_data():
     cols_to_consider = [col for col in df.columns if col.startswith('sensor')]
 
     for col in cols_to_consider:
-        df[col] = df[col].rolling(window=10, min_periods=1).mean()
+        df[col] = df[col].rolling(window=25, min_periods=1).mean()
 
     df['RUL'] = df.groupby(['unit_number'])['time'].transform(max) - df['time']
 

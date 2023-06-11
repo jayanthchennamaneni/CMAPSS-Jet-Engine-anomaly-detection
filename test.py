@@ -2,6 +2,7 @@ from train import RegressionModel
 import torch
 import pandas as pd
 import numpy as np
+import joblib
 
 test_column_names = ['unit_number', 'time', 'operational_setting_1', 'operational_setting_2', 'operational_setting_3'] + ['sensor_measurement_{}'.format(i) for i in range(1, 22)]
 
@@ -15,17 +16,23 @@ X_test_last_cycle = df1.groupby('unit_number').last().reset_index()
 # Convert the dataframe to PyTorch tensor
 X_test_tensor = torch.tensor(X_test_last_cycle.values, dtype=torch.float)
 
+# Load the saved scaler
+scaler_feat = joblib.load('scaler_feat.pkl')
+scaler_target = joblib.load('scaler_target.pkl')
+
+# Scale the test data using the loaded scaler
+X_test_last_cycle = pd.DataFrame(scaler_feat.transform(X_test_last_cycle), columns=X_test_last_cycle.columns)
+
 # Load the model
 model = RegressionModel(26)
-model = torch.load("./models/model.pt")  # Load the trained weights
+model.load_state_dict(torch.load("./models/model2.pt"))
 
 model.eval()
 with torch.no_grad():
     y_pred1 = model(X_test_tensor)
 
-# Convert the predictions to a numpy array
-y_pred1 = y_pred1.squeeze().detach().numpy()
-
+y_pred1 = y_pred1.detach().numpy()
+y_pred1 = scaler_target.inverse_transform(y_pred1)
 
 # Load the true RUL values
 true_rul = pd.read_csv(r'./data/RUL_FD004.txt', sep=" ", header=None)
