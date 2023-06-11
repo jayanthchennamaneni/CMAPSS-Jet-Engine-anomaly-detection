@@ -150,5 +150,7 @@ dmypy.json
 cython_debug/
 
 /data
+/scalers
+
 
 .DS_Store
